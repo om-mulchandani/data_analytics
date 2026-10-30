@@ -563,3 +563,120 @@ select * from tbl_employee where empid=8;
 2. unique key 
 3. foreign key 
 4. compound key 
+
+# what is key constraints in SQL 
+
+1. key constraints provides a limit to tables 
+2. key constraints provide pk | uk | fk  
+
+
+# what is primary key(pk)
+
+1. A pk is always defined only once in a table 
+2. A pk stores unique data 
+3. A pk always should be auto_increment
+4. A pk never returns a null value 
+
+# how to create pk ?
+
+```
+create table tbl_users(
+uid int primary key AUTO_INCREMENT,
+uname varchar(255),
+age int,
+salary float,
+mobile bigint,
+pincode int
+
+)
+or
+insert into tbl_users(uname,age,salary,mobile,pincode) values('tej',24,5582554,912789215,360005),('subham',22,65825,912786215,360001)
+
+```
+
+# what is unique key(uk)
+
+1. A uk is always defined more than one time in a table
+2. A uk can store null value atleast once in a table 
+3. A uk never stored duplicate data 
+ 
+
+# how to create uk ?
+
+```
+alter table tbl_users add UNIQUE KEY(`mobile`)
+or
+insert into tbl_users(uname,age,salary,mobile,pincode) values('tej',24,5582554,912789215,360005),('subham',22,65825,912786215,360001)
+
+```
+
+# what is foreign key(uk)
+
+1. A fk is always defined more than one time in a table 
+2. A fk is used to provide relationship b/w tables   
+3. A fk always provides relationship with common field 
+
+# how to create fk ?
+
+```
+create table tbl_country
+(
+cid int AUTO_INCREMENT primary key,
+cname varchar(255)    
+)
+or
+create table tbl_state
+(
+sid int AUTO_INCREMENT primary key,
+sname varchar(255),
+cid int,
+FOREIGN key(cid) REFERENCES tbl_country(cid)
+
+)
+
+or
+
+create table tbl_city
+(
+ctid int AUTO_INCREMENT primary key,
+ctname varchar(255),
+sid int,
+FOREIGN key(sid) REFERENCES tbl_state(sid)
+
+)
+
+
+or 
+
+create table tbl_users
+(
+uid int AUTO_INCREMENT primary key,
+uname varchar(255),
+age int, 
+address text,
+mobile bigint,
+cid int,
+FOREIGN key(cid) REFERENCES tbl_country(cid),
+
+sid int,
+FOREIGN key(sid) REFERENCES tbl_state(sid),
+
+ctid int,
+FOREIGN key(ctid) REFERENCES tbl_city(ctid),
+create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+)
+
+```
+
+
+# SQL joins ? 
+
+# SQL string function 
+
+# SQL indexer 
+
+# sql view 
+
+# SQL windows function 
+
+# SQL CTE 
